@@ -16,9 +16,16 @@ export class HomeComponent implements OnInit {
   IMAGE_API_URL = IMAGE_API_URL;
 
   mode = new BehaviorSubject('movies' as ContentMode);
-  content = combineLatest([this.mode]).pipe(
-    mergeMap(([mode]) => {
-      return ((mode === 'movies') ?  this.moviesService.getTopRated() :  this.showsService.getTopRated()).pipe(map((data: any) => data?.results));
+  searchQuery = new BehaviorSubject('');
+
+  content = combineLatest([this.mode, this.searchQuery]).pipe(
+    mergeMap(([mode, query]) => {
+      return query?.length > 2 ? (
+        mode === 'movies' ? this.moviesService.searchMovies(query) : this.showsService.searchShows(query)
+      ).pipe(map((data: any) => data?.results))
+      : (
+        mode === 'movies' ?  this.moviesService.getTopRated() :  this.showsService.getTopRated()
+      ).pipe(map((data: any) => data?.results));
     }) 
   );
 
@@ -31,5 +38,9 @@ export class HomeComponent implements OnInit {
 
   setMode(val: ContentMode) {
     this.mode.next(val);
+  }
+
+  onSearch(event: any) {
+    this.searchQuery.next(event?.target?.value || '');
   }
 }

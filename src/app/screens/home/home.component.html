@@ -4,12 +4,12 @@
         <custom-button icon="fa fa-desktop" [isActive]="(mode | async) === 'shows'" (click)="setMode('shows')">TV Shows</custom-button>
     </div>
     <div class="home-screen__search-bar">
-        <search></search>
+        <search (input)="onSearch($event)"></search>
     </div>
     <div class="home-screen__cards-container">
         <card
             *ngFor="let item of (content | async)"
-            title="{{item.title}}"
+            title="{{item.title || item.original_name}}"
             imageURL="{{IMAGE_API_URL + item.poster_path}}"
         ></card>
     </div>

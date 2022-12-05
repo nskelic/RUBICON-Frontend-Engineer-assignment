@@ -1,6 +1,20 @@
-<div *ngIf="(articleData | async) as data; else notFound">
-  <h1>{{data.original_title || data.original_name}}</h1>
+<div class="screen-container article-details-screen">
+  
+  <div class="article-details-screen__buttons">
+    <custom-button icon="fa fa-arrow-left">Back</custom-button>
+    <custom-button icon="fa fa-info-circle">More details</custom-button>
+  </div>
+  <div *ngIf="(articleData | async) as data; else notFound">
+    <div class="article-details-screen__card-container">
+      <card
+      title="{{data.original_title || data.original_name}}"
+      imageURL="{{ARTICLE_IMAGE_API_URL + data.poster_path}}"></card>
+    </div>
+  </div>
+
 </div>
+
+
 
 <ng-template #notFound>
   <div>

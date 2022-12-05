@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   API_URL = API_URL;
   IMAGE_API_URL = IMAGE_API_URL;
 
-  mode = new BehaviorSubject('movies' as ContentMode);
+  mode = new BehaviorSubject('shows' as ContentMode);
   private searchQuery = new BehaviorSubject('');
 
   content = combineLatest([this.mode, this.searchQuery]).pipe(

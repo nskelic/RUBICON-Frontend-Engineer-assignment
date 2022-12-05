@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { mergeMap, tap } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ShowsService } from 'src/app/services/shows.service';
+import { ARTICLE_IMAGE_API_URL } from 'src/config';
 
 @Component({
   selector: 'app-article-details',
@@ -10,6 +11,9 @@ import { ShowsService } from 'src/app/services/shows.service';
   styleUrls: ['./article-details.component.sass'],
 })
 export class ArticleDetailsComponent implements OnInit {
+
+  ARTICLE_IMAGE_API_URL = ARTICLE_IMAGE_API_URL;
+
   articleData = this.route.params.pipe(
     mergeMap((params) => {
       console.log(params);

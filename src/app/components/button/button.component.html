@@ -1,3 +1,4 @@
 <button class="button {{isActive ? 'button--active' : ''}}">
+  <i [class]="icon"></i>{{icon ? '&nbsp;' : ''}}
   <ng-content></ng-content>
 </button>

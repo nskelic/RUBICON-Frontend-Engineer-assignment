@@ -1,20 +1,16 @@
 <div class="screen-container home-screen">
     <div class="home-screen__buttons">
-        <custom-button>Movies</custom-button>
-        <custom-button>TV Shows</custom-button>
+        <custom-button icon="fa fa-film">Movies</custom-button>
+        <custom-button icon="fa fa-desktop">TV Shows</custom-button>
     </div>
     <div class="home-screen__search-bar">
         <search></search>
     </div>
     <div class="home-screen__cards-container">
         <card
-        title="Movie title"
-        imageURL="https://dummyimage.com/600x400/000/fff"></card>
-        <card
-        title="Movie title"
-        imageURL="https://dummyimage.com/600x400/000/fff"></card>
-        <card
-        title="Movie title"
-        imageURL="https://dummyimage.com/600x400/000/fff"></card>
+            *ngFor="let item of (content | async)"
+            title="{{item.title}}"
+            imageURL="{{IMAGE_API_URL + item.poster_path}}"
+        ></card>
     </div>
 </div>

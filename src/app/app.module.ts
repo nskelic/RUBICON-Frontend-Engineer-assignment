@@ -6,6 +6,7 @@ import { HomeComponent } from './screens/home/home.component';
 import { ButtonComponent } from "./components/button/button.component";
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,7 @@ import { SearchComponent } from './components/search/search.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        
+        HttpClientModule
     ]
 })
 export class AppModule { }

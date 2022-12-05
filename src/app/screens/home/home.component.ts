@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   IMAGE_API_URL = IMAGE_API_URL;
 
   mode = new BehaviorSubject('movies' as ContentMode);
-  searchQuery = new BehaviorSubject('');
+  private searchQuery = new BehaviorSubject('');
 
   content = combineLatest([this.mode, this.searchQuery]).pipe(
     mergeMap(([mode, query]) => {

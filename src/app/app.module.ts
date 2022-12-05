@@ -7,6 +7,7 @@ import { ButtonComponent } from "./components/button/button.component";
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ArticleDetailsComponent } from './screens/article-details/article-details.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
         HomeComponent,
         ButtonComponent,
         CardComponent,
-        SearchComponent
+        SearchComponent,
+        ArticleDetailsComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

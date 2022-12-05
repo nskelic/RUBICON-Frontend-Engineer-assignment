@@ -1,0 +1,11 @@
+<div *ngIf="(articleData | async) as data; else notFound">
+  <h1>{{data.original_title || data.original_name}}</h1>
+</div>
+
+<ng-template #notFound>
+  <div>
+    <h1>
+      The article could not be found!
+    </h1>
+  </div>
+</ng-template>

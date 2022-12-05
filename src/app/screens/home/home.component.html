@@ -4,7 +4,7 @@
         <custom-button icon="fa fa-desktop" [isActive]="(mode | async) === 'shows'" (click)="setMode('shows')">TV Shows</custom-button>
     </div>
     <div class="home-screen__search-bar">
-        <search (input)="onSearch($event)"></search>
+        <search (input)="debouncedSearch($event)"></search>
     </div>
     <div class="home-screen__cards-container">
         <card

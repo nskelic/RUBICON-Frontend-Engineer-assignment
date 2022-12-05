@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, map, merge, mergeMap } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ShowsService } from 'src/app/services/shows.service';
+import { debounce } from 'src/app/utils';
 import { API_URL, IMAGE_API_URL } from 'src/config';
 
 type ContentMode = 'movies' | 'shows';
@@ -36,11 +37,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setMode(val: ContentMode) {
+  setMode = (val: ContentMode) => {
     this.mode.next(val);
   }
 
-  onSearch(event: any) {
-    this.searchQuery.next(event?.target?.value || '');
+  onSearch = (event: any) => {
+    const query: string = event?.target?.value || ''
+    this.searchQuery.next(query);
   }
+
+  debouncedSearch = debounce(this.onSearch, 1000)
 }

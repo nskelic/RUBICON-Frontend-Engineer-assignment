@@ -1,21 +1,42 @@
 <div class="screen-container article-details-screen">
   
   <div class="article-details-screen__buttons">
-    <custom-button icon="fa fa-arrow-left">Back</custom-button>
-    <custom-button icon="fa fa-info-circle">More details</custom-button>
+    <custom-button
+      icon="fa fa-arrow-left"
+      [routerLink]="''"
+    >Back</custom-button>
   </div>
   <div *ngIf="(articleData | async) as data; else notFound">
     <div class="article-details-screen__card-container">
       <card
-      title="{{data.original_title || data.original_name}}"
+      title="{{data.name || data.original_title || data.original_name}}"
       videoKey="{{data.videos?.results?.[0]?.key}}"
       imageURL="{{ARTICLE_IMAGE_API_URL + data.poster_path}}"></card>
     </div>
-  </div>
+    <div class="article-details-screen__aditional-info">
+      <div class="aditional-info__rating">
+        <circle-progress [percent]=data.vote_average*10></circle-progress>
+        <div class="rating__number">
+          <p>{{data.vote_average}}</p>
+        </div>
+      </div>
+      <div class="aditional-info__info">
+          <div *ngFor="let item of data.production_companies" class="i">
+            <p>{{item.name}}</p>
+          </div>
+          <div *ngFor="let item of data.genres" class="i">
+            <p>{{item.name}}</p>
+          </div>
+          <p *ngIf="data.episode_run_time?.length || data.runtime" class="i">{{data.episode_run_time?.[0] || data.runtime}} min</p>
+          <p>{{data.status}}</p>
+      </div>
+    </div>
+    <div class="article-details-screen__overview">
+      <h3>{{data.original_title || data.original_name}}</h3>
+      <p>{{data.overview}}</p>
+    </div>
 
 </div>
-
-
 
 <ng-template #notFound>
   <div>

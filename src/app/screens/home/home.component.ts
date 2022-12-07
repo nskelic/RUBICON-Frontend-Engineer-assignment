@@ -24,10 +24,7 @@ export class HomeComponent {
     mergeMap(([mode, query]) => {
       return query?.length > 2 ? (
         mode === 'movies' ? this.moviesService.searchMovies(query) : this.showsService.searchShows(query)
-        //localStorage.getItem('storedInput') ? (
-        //  mode === 'movies' ? this.moviesService.searchMovies(localStorage.getItem('storedInput')!) : this.showsService.searchShows(localStorage.getItem('storedInput')!)
-        //) : (mode === 'movies' ? this.moviesService.searchMovies(query) : this.showsService.searchShows(query))
-      ).pipe(map((data: any) => data?.results))
+        ).pipe(map((data: any) => data?.results))
       : (
         mode === 'movies' ?  this.moviesService.getTopRated() :  this.showsService.getTopRated()
       ).pipe(map((data: any) => data?.results));
@@ -49,7 +46,7 @@ export class HomeComponent {
     this.searchQuery.next(query);
   }
 
-  navigate = (id: any) => {
+  navigate = (id: number) => {
     localStorage.setItem('storedMode', this.mode.getValue());
     localStorage.setItem('storedInput', this.searchQuery.getValue());
     this.router.navigateByUrl('/article-details/' + this.mode.getValue() + '/' + id);
@@ -61,4 +58,3 @@ export class HomeComponent {
 function initMode() {
   return localStorage.getItem('storedMode') ? new BehaviorSubject(localStorage.getItem('storedMode') as ContentMode) : new BehaviorSubject('shows' as ContentMode);
 }
-

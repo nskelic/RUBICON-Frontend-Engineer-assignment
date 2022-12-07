@@ -10,7 +10,7 @@
         <fade-card class="home-screen__card"
             *ngFor="let item of (content | async)"
             (click)="navigate(item.id)"
-            title="{{item.title || item.original_name}}"
+            title="{{item.name || item.title || item.original_name}}"
             imageURL="{{IMAGE_API_URL + item.poster_path}}"
         ></fade-card>
     </div>

@@ -9,6 +9,7 @@ import { SearchComponent } from './components/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticleDetailsComponent } from './screens/article-details/article-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { FadeCardComponent } from './components/fade-card/fade-card.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
         ButtonComponent,
         CardComponent,
         SearchComponent,
-        ArticleDetailsComponent
+        ArticleDetailsComponent,
+        FadeCardComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -26,14 +28,13 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
         AppRoutingModule,
         HttpClientModule,
         NgCircleProgressModule.forRoot({
-            // set defaults here
             radius: 27,
             outerStrokeWidth: 8,
             innerStrokeWidth: 8,
             space: -8,
             outerStrokeColor: "#4882c2",
             outerStrokeGradientStopColor: "#53a9ff",
-            innerStrokeColor: "#e7e8ea",
+            innerStrokeColor: "#c8c8cf",
             animationDuration: 0,
             showUnits: false,
             showSubtitle: false,

@@ -7,8 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./card.component.sass']
 })
 export class CardComponent {
-  @Input() title: string = '';
-  @Input() imageURL: string = '';
+  @Input() title = '';
+  @Input() imageURL = '';
   @Input() videoKey?: string;
 
   constructor(private sanitizer: DomSanitizer) {}

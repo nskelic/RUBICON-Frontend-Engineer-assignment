@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, combineLatest, map, merge, mergeMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, mergeMap } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ShowsService } from 'src/app/services/shows.service';
 import { debounce } from 'src/app/utils';
@@ -13,7 +13,7 @@ type ContentMode = 'movies' | 'shows';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   API_URL = API_URL;
   IMAGE_API_URL = IMAGE_API_URL;
 
@@ -40,9 +40,6 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-  }
-
   setMode = (val: ContentMode) => {
     this.mode.next(val);
   }
@@ -64,5 +61,4 @@ export class HomeComponent implements OnInit {
 function initMode() {
   return localStorage.getItem('storedMode') ? new BehaviorSubject(localStorage.getItem('storedMode') as ContentMode) : new BehaviorSubject('shows' as ContentMode);
 }
-
 

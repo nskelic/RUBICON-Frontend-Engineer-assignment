@@ -1,11 +1,6 @@
 <div class="card">
-  <div class="card__media-container">
-    <img *ngIf="!videoUrl" class="card__image" [src]="imageURL" alt="">
+    <img *ngIf="!videoUrl" class="card__image" [src]="imageURL" onerror="this.src='../assets/noImage.png'" alt="">
     <iframe *ngIf="videoUrl" class="card__video" title="youtube" className="w-100" height="550"
       [src]="videoUrl" frameBorder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-  </div>
-  <div class="card__title-container">
-    <p class="card__title">{{title}}</p>
-  </div>
 </div>

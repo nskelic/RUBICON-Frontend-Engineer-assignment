@@ -6,34 +6,33 @@
       [routerLink]="''"
     >Back</custom-button>
   </div>
-  <div *ngIf="(articleData | async) as data; else notFound">
+  <div *ngIf="(articleData | async) as data; else notFound" class="article-details-screen__container">
     <div class="article-details-screen__card-container">
-      <card
-      title="{{data.name || data.original_title || data.original_name}}"
+      <card class="article-details-screen__card"
       videoKey="{{data.videos?.results?.[0]?.key}}"
       imageURL="{{ARTICLE_IMAGE_API_URL + data.poster_path}}"></card>
-    </div>
-    <div class="article-details-screen__aditional-info">
-      <div class="aditional-info__rating">
-        <circle-progress [percent]=data.vote_average*10></circle-progress>
-        <div class="rating__number">
-          <p>{{data.vote_average}}</p>
+      <div class="article-details-screen__all-info">
+        <div class="article-details-screen__title">
+          <div class="aditional-info__rating">
+            <circle-progress [percent]=data.vote_average*10></circle-progress>
+            <p class="rating__number">{{data.vote_average}}</p>
+          </div>
+          <h1>{{data.name || data.original_title || data.original_name}}</h1>
+        </div>
+        <div class="article-details-screen__aditional-info">
+          <div class="aditional-info__info">
+              <div *ngFor="let item of data.genres" class="i">
+                <p>{{item.name}}</p>
+              </div>
+              <p *ngIf="data.episode_run_time?.length || data.runtime" class="i">{{data.episode_run_time?.[0] || data.runtime}} min</p>
+              <p class="i">{{data.status}}</p>
+          </div>
+        </div>
+        <div class="article-details-screen__overview">
+          <h3>{{data.original_title || data.original_name || data.name}}</h3>
+          <p>{{data.overview}}</p>
         </div>
       </div>
-      <div class="aditional-info__info">
-          <div *ngFor="let item of data.production_companies" class="i">
-            <p>{{item.name}} production</p>
-          </div>
-          <div *ngFor="let item of data.genres" class="i">
-            <p>{{item.name}}</p>
-          </div>
-          <p *ngIf="data.episode_run_time?.length || data.runtime" class="i">{{data.episode_run_time?.[0] || data.runtime}} min</p>
-          <p>{{data.status}}</p>
-      </div>
-    </div>
-    <div class="article-details-screen__overview">
-      <h3>{{data.original_title || data.original_name}}</h3>
-      <p>{{data.overview}}</p>
     </div>
 
 </div>

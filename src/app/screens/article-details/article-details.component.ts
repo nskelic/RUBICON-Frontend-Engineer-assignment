@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap, tap } from 'rxjs';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -10,7 +10,7 @@ import { ARTICLE_IMAGE_API_URL } from 'src/config';
   templateUrl: './article-details.component.html',
   styleUrls: ['./article-details.component.sass'],
 })
-export class ArticleDetailsComponent implements OnInit {
+export class ArticleDetailsComponent {
 
   ARTICLE_IMAGE_API_URL = ARTICLE_IMAGE_API_URL;
 
@@ -31,5 +31,4 @@ export class ArticleDetailsComponent implements OnInit {
     private showsService: ShowsService
   ) {}
 
-  ngOnInit(): void {}
 }

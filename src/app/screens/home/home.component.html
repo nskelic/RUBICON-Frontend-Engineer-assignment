@@ -7,11 +7,11 @@
         <search (input)="debouncedSearch($event)"></search>
     </div>
     <div class="home-screen__cards-container">
-        <card
+        <fade-card class="home-screen__card"
             *ngFor="let item of (content | async)"
             (click)="navigate(item.id)"
             title="{{item.title || item.original_name}}"
             imageURL="{{IMAGE_API_URL + item.poster_path}}"
-        ></card>
+        ></fade-card>
     </div>
 </div>
